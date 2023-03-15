@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Solver</title>
+    <script>
+        function submitSudoku(event) {
+            event.preventDefault();
+            const form = document.getElementById("sudoku-form");
+            const input = document.getElementById("sudoku-input");
+            const output = document.getElementById("sudoku-output");
+            const puzzle = JSON.parse(input.value);
+
+            fetch('/solve', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ puzzle: puzzle })
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.blob();
+                } else {
+                    return response.json();
+                }
+            })
+            .then(data => {
+                if (data instanceof Blob) {
+                    const imgURL = URL.createObjectURL(data);
+                    output.innerHTML = `<img src="${imgURL}" alt="Sudoku solution">`;
+                } else {
+                    output.innerText = "No solution found.";
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                output.innerText = "An error occurred.";
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Sudoku Solver</h1>
+    <form id="sudoku-form" onsubmit="submitSudoku(event)">
+        <label for="sudoku-input">Enter Sudoku puzzle as a JSON array:</label><br>
+        <textarea id="sudoku-input" rows="10" cols="50"></textarea><br>
+        <button type="submit">Solve</button>
+    </form>
+    <h2>Solution:</h2>
+    <pre id="sudoku-output"></pre>
+</body>
+</html>
