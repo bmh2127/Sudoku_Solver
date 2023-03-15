@@ -1,7 +1,9 @@
-#Sudoku Solver API
+# Sudoku Solver API
+Brandon Hager
+`bmh2127@gmail.com`  
 This API provides a simple interface to solve Sudoku puzzles. The API accepts a 9x9 Sudoku puzzle as input and returns a solved puzzle in the form of a JSON array and a visual representation in JPEG format.
 
-Getting Started
+## Getting Started
 These instructions will help you set up and run the Sudoku Solver API on your local machine.
 
 Prerequisites
@@ -10,36 +12,45 @@ Flask
 NumPy
 Matplotlib
 Installing
-Clone the repository to your local machine:
-bash
-Copy code
+
+## Clone the repository to your local machine:
+<pre>
+```bash
 git clone https://github.com/yourusername/sudoku_solver_api.git
+```
+</pre>
 Change to the project directory:
-bash
-Copy code
+<pre>
+```bash
 cd sudoku_solver_api
+```
+</pre>
 Install the required packages:
-bash
-Copy code
+<pre>
+```bash
 pip install -r requirements.txt
-Running the API
+```
+</pre>
+
+## Running the API
+
 To run the API locally, execute the following command:
-
-bash
-Copy code
+<pre>
+```bash
 flask run
+```
+</pre>
 The API will be accessible at http://127.0.0.1:5000/.
-
-API Usage
-POST /solve
+## API Usage
+## POST /solve
 Solve a Sudoku puzzle.
 
-Input
+## Input
 JSON payload with a puzzle field containing a 9x9 Sudoku puzzle as a list of lists.
 Example:
 
-json
-Copy code
+<pre>
+```bash
 {
   "puzzle": [
     [5, 3, 0, 0, 7, 0, 0, 0, 0],
@@ -53,8 +64,10 @@ Copy code
     [0, 0, 0, 0, 8, 0, 0, 7, 9]
   ]
 }
-Output
+```
+</pre>
+
+## Output
 Solved puzzle as a JSON array and a visual representation in JPEG format.
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
+
 
