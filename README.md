@@ -1,4 +1,4 @@
-Sudoku Solver API
+#Sudoku Solver API
 This API provides a simple interface to solve Sudoku puzzles. The API accepts a 9x9 Sudoku puzzle as input and returns a solved puzzle in the form of a JSON array and a visual representation in JPEG format.
 
 Getting Started
